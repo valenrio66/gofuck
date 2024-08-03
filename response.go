@@ -32,7 +32,7 @@ func ParseFuckingBody[T any](ctx *fiber.Ctx, dest *T) error {
 }
 
 func GoddamnID(ctx *fiber.Ctx, param string) (string, error) {
-	id := ctx.Params(param)
+	id := ctx.Query(param)
 	if id == "" {
 		return "", FuckTheErrorResponse(ctx, fiber.StatusBadRequest, "ID tidak ditemukan dalam parameter")
 	}
