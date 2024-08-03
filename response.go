@@ -23,3 +23,10 @@ func FuckTheErrorResponse(ctx *fiber.Ctx, code int, status string) error {
 	}
 	return ctx.Status(code).JSON(response)
 }
+
+func ParseFuckingBody[T any](ctx *fiber.Ctx, dest *T) error {
+	if err := ctx.BodyParser(dest); err != nil {
+		return FuckTheErrorResponse(ctx, fiber.StatusBadRequest, "Body Request tidak Sesuai")
+	}
+	return nil
+}
